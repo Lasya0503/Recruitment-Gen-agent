@@ -116,7 +116,26 @@ for key, default in {
 # SIDEBAR CONTROL PANEL (Dynamic Role Weighting Implementation)
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.image(r"C:\Users\LASYA.P\.gemini\antigravity\brain\babca172-cf07-4533-a21b-f5b10fc991b0\corporate_logo_1780912751949.png", width=60)
+    st.markdown(
+        """
+        <div style="padding: 15px; border-radius: 8px; background-color: rgba(128, 128, 128, 0.1); border: 1px solid #94a3b8; margin-bottom: 25px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                <span style="font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; opacity: 0.9;">SYSTEM ONLINE</span>
+            </div>
+            <p style="margin: 8px 0 0 0; font-size: 0.8rem; line-height: 1.4; font-weight: 500; opacity: 0.7;">
+                AI Recruitment Engine is actively monitoring talent pipelines.
+            </p>
+        </div>
+        <style>
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        </style>
+        """, unsafe_allow_html=True
+    )
     st.markdown("## Company Profile")
     st.caption("Configure for your organization before running.")
     company   = st.text_input("Company Name",      value=DEFAULT_TENANT.company_name)
@@ -213,22 +232,22 @@ if run_clicked:
                         Generate your report using EXACTLY these markdown headers:
                         
                         ### Resume Screening Summary
-                        (Provide a professional, concise executive summary of their background)
+                        (Provide a highly detailed, professional executive summary of the candidate's background. Use bullet points to highlight their core competencies, total years of experience, and most notable career achievements.)
                         
                         ### Technical Evaluation
-                        (Critically assess their specific skills vs the job requirements. YOU MUST END THIS SECTION WITH EXACTLY 'Match Score: X' where X is an integer from 0-100 indicating how perfectly they match the JD. 100 means they have the exact skills and experience required.)
+                        (Critically and extensively assess their specific skills against the job requirements. Use bullet points to break down 'Strengths' and 'Areas for Improvement'. YOU MUST END THIS SECTION WITH EXACTLY 'Match Score: X' where X is an integer from 0-100 indicating how perfectly they match the JD.)
                         
                         ### Hiring Recommendation
-                        (Provide a highly professional verdict based on the evidence)
+                        (Provide a comprehensive, highly professional verdict. Justify your recommendation with a detailed paragraph explaining exactly why their profile is a strong, moderate, or weak fit for this specific enterprise role.)
                         
                         ### Interview Question Set
-                        (Provide 3-5 highly advanced, role-specific interview questions)
+                        (Provide 3-5 highly advanced, role-specific interview questions. For each question, provide a brief bullet point explaining what specific skill or competency this question is designed to evaluate.)
                         
                         ### Interview Scheduling Plan
-                        (Provide a highly realistic, practical interview plan based ONLY on the actual facts present in the candidate's resume and the job description. Do NOT hallucinate skills, invent false details, or create overly complex theoretical scenarios. Propose 2-3 focused interview stages that accurately reflect standard hiring practices, clearly outlining which real skills from their resume need to be verified against the job description.)
+                        (Provide a highly realistic, practical interview plan based ONLY on the actual facts present in the candidate's resume and the job description. Do NOT hallucinate skills. Propose 2-3 focused interview stages using a bulleted list. For each stage, clearly outline which real skills from their resume will be verified.)
                         
                         ### Candidate Outreach Email
-                        (Write a polished, professional email to the candidate to invite them to the next steps. Use {sched_url} if available. Do NOT include any placeholder times, dates, or arbitrary durations. Keep it crisp, warm, and highly corporate.)
+                        (Write a polished, professional, and detailed email to the candidate to invite them to the next steps. Ensure the tone is warm but highly corporate. Use {sched_url} if available. Do NOT include any placeholder times or dates.)
                         
                         Candidate Resume Text: {resume_text}
                         Job Description Input: {job_desc}
