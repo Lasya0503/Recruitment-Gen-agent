@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* ==========================================================================
+   MINIMALIST DARK THEME (NATIVE STREAMLIT OVERRIDES)
+   ========================================================================== */
+
+:root {
+    --bg-surface: #262730;       
+    --border-light: rgba(255, 255, 255, 0.1);  
+    --text-primary: #fafafa;     
+    --text-secondary: #888888;   
+    --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --radius-md: 8px;
+}
+
+/* ─── GLOBAL APP STYLING ─── */
+.stApp {
+    font-family: var(--font-family) !important;
+    letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family) !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* ─── STRICT SIDEBAR DIFFERENTIATION ─── */
+[data-testid="stSidebar"] {
+    background-color: #000000 !important; /* Seamless pure black */
+    border-right: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+[data-testid="stSidebar"] *:not(.material-symbols-rounded):not([class*="icon"]):not(svg) {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ─── ADVANCED AI PRIMARY BUTTONS ─── */
+.stButton>button[data-testid="stBaseButton-primary"] {
+    background: linear-gradient(135deg, #0070f3 0%, #005ce6 100%) !important;
+    color: #ffffff !important; 
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 4px 14px 0 rgba(0, 112, 243, 0.39) !important;
+    transition: all 0.3s ease-in-out !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton>button[data-testid="stBaseButton-primary"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(0, 112, 243, 0.5) !important;
+    background: linear-gradient(135deg, #3291ff 0%, #0070f3 100%) !important;
+}
+
+/* ─── ADVANCED INPUT FIELDS & ANIMATIONS ─── */
+div[data-baseweb="input"] > div, 
+div[data-baseweb="textarea"] > div,
+[data-testid="stFileUploader"] {
+    background-color: #161b22 !important; /* Attractive professional dark slate */
+    border: 1px solid #30363d !important; /* Clean, visible structural border */
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* On hover, slight lift. (Focus is handled flawlessly by Streamlit natively now) */
+div[data-baseweb="input"] > div:hover, 
+div[data-baseweb="textarea"] > div:hover,
+[data-testid="stFileUploader"]:hover {
+    background-color: #1e1e2d !important; 
+    transform: translateY(-1px) !important;
+}
+
+div[data-baseweb="input"] input, 
+div[data-baseweb="textarea"] textarea {
+    color: #ffffff !important;
+    font-family: 'Inter', sans-serif !important;
+    background-color: transparent !important;
+}
+
+/* ─── ADVANCED INTERACTIVE DASHBOARD CARDS (LEADERBOARD & CHARTS) ─── */
+[data-testid="stDataFrame"], [data-testid="stPlotlyChart"] {
+    background-color: #0c0c0f !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: 12px !important;
+    padding: 5px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+[data-testid="stDataFrame"]:hover, [data-testid="stPlotlyChart"]:hover {
+    transform: translateY(-4px) !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15), 0 4px 10px rgba(0,0,0,0.5) !important;
+}
+
+/* ─── BRAND HEADER ─── */
+.brand-header-matrix {
+    display: flex; align-items: center; padding: 0 0 5px 0; margin-top: -30px;
+}
+.brand-title-text {
+    font-size: 2rem; font-weight: 300; color: var(--text-primary); margin: 0; letter-spacing: -0.03em;
+}
+.brand-subtitle-subtext {
+    color: var(--text-secondary); font-size: 1rem; font-weight: 300; margin-bottom: 15px; 
+}
+
+/* ─── CUSTOM METRICS & ANIMATIONS ─── */
+.custom-metric-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    height: 110px !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.custom-metric-label {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.custom-metric-val {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Force dark text explicitly on radar/donut when in dark mode */
+.js-plotly-plot .plotly text {
+    fill: #ededed !important;
+}
+
+/* Hide scrollbars specifically for Plotly charts */
+[data-testid="stPlotlyChart"],
+[data-testid="stPlotlyChart"] > div,
+[data-testid="stPlotlyChart"] iframe {
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+
